@@ -3,192 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALUBE - Moda para Todos</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+    <title>MALUBE STYLE</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce8f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #ff69b4;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .menu {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            background: #F48FB1;
+            padding: 15px 0;
+        }
+
+        .menu li {
+            margin: 0 15px;
+            position: relative;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            list-style: none;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .submenu li {
+            padding: 8px;
+            background: #fff;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .submenu li:hover {
+            background: #f48fb1;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .productos {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .productos img {
+            width: 120px;
+            height: 140px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Bienvenido a MALUBE - Moda para Todos</h1>
-        <nav>
-            <ul class="menu">
-                <li class="dropdown">
-                    <a href="#">Ropa de Mujer</a>
-                    <ul class="submenu">
-                        <li><a href="#">Vestidos</a></li>
-                        <li><a href="#">Blusas</a></li>
-                        <li><a href="#">Pantalones</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Ropa de Hombre</a>
-                    <ul class="submenu">
-                        <li><a href="#">Camisas</a></li>
-                        <li><a href="#">Pantalones</a></li>
-                        <li><a href="#">Chaquetas</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Maquillaje</a>
-                    <ul class="submenu">
-                        <li><a href="#">Labiales</a></li>
-                        <li><a href="#">Sombras</a></li>
-                        <li><a href="#">Bases</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Zapatos</a>
-                    <ul class="submenu">
-                        <li><a href="#">Dama</a></li>
-                        <li><a href="#">Caballero</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+        ¡Bienvenidos a <span style="color: yellow;">MALUBE STYLE</span>! Encuentra tu estilo perfecto con nuestra exclusiva colección de ropa y accesorios.
     </header>
-
-    <section class="portada">
-        <h1>Bienvenidos a MALUBE</h1>
-        <p>Tu tienda de moda online</p>
+    
+    <ul class="menu">
+        <li class="dropdown">Ropa de Mujer
+            <ul class="submenu">
+                <li onclick="showCategory('mujer')">Vestidos</li>
+                <li onclick="showCategory('abrigos')">Abrigos</li>
+                <li onclick="showCategory('blusas')">Blusas</li>
+            </ul>
+        </li>
+        <li class="dropdown">Ropa de Hombre
+            <ul class="submenu">
+                <li onclick="showCategory('hombre')">Camisetas</li>
+                <li onclick="showCategory('chaquetas')">Chaquetas</li>
+            </ul>
+        </li>
+        <li class="dropdown">Maquillaje
+            <ul class="submenu">
+                <li onclick="showCategory('labiales')">Labiales</li>
+                <li onclick="showCategory('sombras')">Sombras</li>
+            </ul>
+        </li>
+        <li class="dropdown">Zapatos Dama
+            <ul class="submenu">
+                <li onclick="showCategory('tacones')">Tacones</li>
+                <li onclick="showCategory('botas')">Botas</li>
+                <li onclick="showCategory('zapatillas')">Zapatillas</li>
+            </ul>
+        </li>
+        <li class="dropdown">Zapatos Hombre
+            <ul class="submenu">
+                <li onclick="showCategory('deportivos')">Deportivos</li>
+                <li onclick="showCategory('formales')">Formales</li>
+            </ul>
+        </li>
+    </div>
+    
+    <section class="productos" id="productos">
+        <h2>Categoría seleccionada</h2>
+        <div id="productosLista"></div>
     </section>
+    
+    <script>
+        document.querySelectorAll('.dropdown').forEach(drop => {
+            let submenu = drop.querySelector('.submenu');
+            drop.addEventListener('click', function () {
+                let allSubmenus = document.querySelectorAll(".submenu");
+                allSubmenus.forEach(sub => {
+                    if (submenu !== this.querySelector('.submenu')) {
+                        submenu.classList.remove("show");
+                    }
+                });
+                submenu.classList.toggle("show");
+            });
+        });
 
-    <section class="productos">
-        <h2>Nuestros Productos</h2>
-        <div class="producto">
-            <img src="img/ropa_mujer.jpg" alt="Ropa de Mujer">
-            <p>Ropa de Mujer</p>
-            <button class="btn-comprar">Comprar</button>
-        </div>
-        <div class="producto">
-            <img src="images/ropa_hombre.jpg" alt="Ropa de Hombre">
-            <p>Ropa de Hombre</p>
-            <button class="btn-comprar">Comprar</button>
-        </div>
-        <div class="producto">
-            <p>Maquillaje</p>
-            <img src="img/maquillaje.jpg" alt="Maquillaje">
-            <button class="btn-comprar">Comprar</button>
-        </div>
-        <div class="producto">
-            <p>Zapatos de Dama</p>
-            <img src="zapatos_dama.jpg" alt="Zapatos para Dama">
-            <button class="btn-comprar">Comprar</button>
-        </div>
-        <div class="producto">
-            <p>Zapatos de Hombre</p>
-            <img src="zapatos_hombre.jpg" alt="Zapatos de Hombre">
-            <button class="btn-comprar">Comprar</button>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 MALUBE - Moda con estilo</p>
-    </footer>
+        function showCategory(category) {
+            let productos = {
+                'mujer': [
+                    {nombre: "Blusa Elegante", precio: "$30", img: "https://via.placeholder.com/120"},
+                    {precio: "$40", img: "https://via.placeholder.com/120"}
+                ],
+                'chaquetas': [
+                    {precio: "$60", img: "https://via.placeholder.com/120"},
+                    {precio: "$55", img: "https://via.placeholder.com/120"}
+                ],
+                'deportivos': [
+                    {precio: "$80", img: "https://via.placeholder.com/120"},
+                    {precio: "$65", img: "https://via.placeholder.com/120"}
+                ]
+            }
+        };
+        
+        let productosDiv = document.getElementById("productosLista");
+        let productos = categorias[category];
+        
+        if (productos) {
+            productos.forEach(producto => {
+                let prodDiv = document.createElement("div");
+                prodDiv.classList.add("producto");
+                prodDiv.innerHTML = `<img src="${producto.img}" alt="Producto"><p>${producto.precio}</p>`;
+                document.getElementById("productosLista").appendChild(prodDiv);
+            });
+        }
+    }
+</script>
 </body>
 </html>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fce8f3;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #ff69b4;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.menu {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    background: #F48FB1;
-    padding: 15px;
-}
-
-.menu li {
-    margin: 0 15px;
-    position: relative;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    transition: 0.3s;
-    display: block;
-}
-
-.menu li:hover > a {
-    background: #D81B60;
-    border-radius: 5px;
-}
-
-.submenu {
-    display: none;
-    position: absolute;
-    background: white;
-    list-style: none;
-    padding: 10px;
-    min-width: 150px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown:hover .submenu {
-    display: block;
-}
-
-.productos {
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.producto {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 180px;
-}
-
-.producto img {
-    width: 100px;
-    height: 120px;
-    border-radius: 10px;
-}
-
-.btn-comprar {
-    background: #FF4081;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.btn-comprar:hover {
-    background: #D81B60;
-}
-
-footer {
-    background: #F06292;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
