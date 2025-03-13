@@ -74,7 +74,7 @@ header {
 }
 
 .btn-comprar {
-    background: #FF4081;
+    background: #fc3879;
     color: white;
     padding: 10px;
     border: none;
@@ -82,5 +82,5 @@ header {
 }
 
 .btn-comprar:hover {
-    background: #D81B60;
+    background: #e91966;
 }
