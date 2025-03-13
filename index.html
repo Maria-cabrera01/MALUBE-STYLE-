@@ -1,78 +1,39 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-
-const categories = [
-  { name: "Ropa de Mujer", img: "https://via.placeholder.com/200", path: "/ropa-mujer" },
-  { name: "Ropa de Hombre", img: "https://via.placeholder.com/150", path: "/hombre" },
-  { name: "Maquillaje", img: "https://via.placeholder.com/150", path: "/maquillaje" },
-  { name: "Zapatos Dama", img: "https://via.placeholder.com/150", path: "/zapatos-dama" },
-  { name: "Zapatos Hombre", img: "https://via.placeholder.com/150", path: "/zapatos-hombre" },
-];
-
-const Home = () => {
-  return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <header className="bg-pink-400 text-white text-xl font-bold p-4 text-center">
-        ¡Bienvenidos a MALUBE!
-      </header>
-      <div className="flex flex-wrap justify-center p-6 gap-6">
-        {categories.map((cat) => (
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            key={cat.name}
-            className="bg-white shadow-lg p-6 rounded-2xl text-center w-64 cursor-pointer hover:shadow-xl"
-          >
-            <Link to={cat.path}>
-              <img src={cat.img} alt={cat.name} className="w-full h-40 object-cover rounded-xl mb-3" />
-              <h2 className="text-xl font-bold text-gray-800">{cat.name}</h2>
-              <p className="text-gray-600">Explora nuestra colección exclusiva</p>
-            </Link>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-  );
-};
-
-const RopaHombre = () => (
-  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-    <header className="bg-pink-500 text-white text-xl font-bold text-center p-6">
-      Ropa de Hombre
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALUBE - Moda y Estilo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>MALUBE - Moda y Estilo</h1>
+        <p>Descubre nuestra increíble colección de ropa para todos los gustos</p>
     </header>
-    <div className="flex flex-wrap justify-center p-6 gap-6">
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="bg-white p-4 rounded-2xl shadow-lg w-64 text-center hover:shadow-2xl"
-        >
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Ropa Hombre"
-            className="w-full h-48 object-cover rounded-md mb-4"
-          />
-          <h3 className="text-lg font-semibold">Camisa elegante</h3>
-          <p className="text-gray-600">Camisa de algodón de alta calidad, perfecta para eventos formales o casuales.</p>
-          <span className="block font-bold text-pink-500">$29.99</span>
-          <button className="mt-3 bg-pink-500 text-white p-2 rounded-lg hover:bg-pink-700">
-            Comprar
-          </button>
-        </motion.div>
-  </motion.div>
-);
 
-export default function MALUBE() {
-  return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={<Home />}
-        />
-        <Route path="/hombre" element={<RopaHombre />} />
-      </Routes>
-    </Router>
-  );
-}
+    <div class="container">
+        <div class="card">
+            <img src="img/ropa-hombre.jpg" alt="Ropa de Hombre">
+            <h2>Ropa de Hombre</h2>
+            <p>En esta sección encontrarás una variedad de ropa para caballero, donde te harás lucir como un príncipe.</p>
+            <a href="hombre.html" class="button">Ver más</a>
+        </div>
+
+        <div class="card">
+            <img src="img/ropa-mujer.jpg" alt="Ropa de Mujer">
+            <h2>Ropa de Mujer</h2>
+            <p>Explora nuestra colección de moda femenina y encuentra tu estilo perfecto.</p>
+            <a href="#" class="button">Ver más</a>
+        </div>
+
+        <div class="card">
+            <img src="img/ropa-niños.jpg" alt="Ropa para Niños">
+            <h2>Ropa para Niños</h2>
+            <p>Moda y comodidad para los más pequeños del hogar.</p>
+            <a href="#" class="button">Ver más</a>
+        </div>
+    </div>
+
+</body>
+</html>
