@@ -9,70 +9,133 @@
 </head>
 <body>
     <header>
-        <div class="logo">MALUBE</div>
-        <nav>
-            <ul class="menu">
-                <li><a href="#mujer">Ropa de Mujer</a></li>
-                <li><a href="#hombre">Ropa de Hombre</a></li>
-                <li class="dropdown">
-                    <a href="#">Calzado ▼</a>
-                    <ul class="submenu">
-                        <li><a href="#zapatos-mujer">Dama</a></li>
-                        <li><a href="#zapatos-hombre">Hombre</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#">Accesorios ▼</a>
-                    <ul class="submenu">
-                        <li><a href="#collares">Collares</a></li>
-                        <li><a href="#pulseras">Pulseras</a></li>
-                        <li><a href="#anillos">Anillos</a></li>
-                    </ul>
-                </li>\n
-                <li><a href="#maquillaje">Maquillaje</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+        MALUBE - Moda y Estilo
     </header>
-
-    <section id="portada">
-        <h1>Bienvenidos a MALUBE</h1>
-        <p>Descubre la mejor moda para todos los estilos</p>
-        <a href="#mujer" class="btn">Explorar</a>
-    </section>
-
-    <section id="mujer" class="productos">
-        <h2>Ropa de Mujer</h2>
+    <nav>
+        <ul class="menu">
+            <li class="menu-item"><a href="#">Inicio</a></li>
+            <li class="menu-item dropdown">
+                <a href="#" class="menu-link">Ropa de Mujer</a>
+                <ul class="submenu">
+                    <li><a href="#">Vestidos</a></li>
+                    <li><a href="#">Blusas</a></li>
+                    <li><a href="#">Pantalones</a></li>
+                </ul>
+            </li>
+            <li class="menu-item"><a href="#">Ropa de Hombre</a></li>
+            <li class="menu-item dropdown">
+                <a href="#" class="dropdown-btn">Maquillaje</a>
+                <ul class="submenu">
+                    <li><a href="#">Labiales</a></li>
+                    <li><a href="#">Bases</a></li>
+                    <li><a href="#">Sombras</a></li>
+                </ul>
+            </li>
+            <li class="menu-item dropdown">
+                <a href="#">Zapatos</a>
+                <ul class="submenu">
+                    <li><a href="#">Dama</a></li>
+                    <li><a href="#">Hombre</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <section class="productos">
+        <h2>Nuestros Productos</h2>
         <div class="producto">
-            <img src="images/vestido.jpg" alt="Vestido Rojo">
-            <h3>Vestido Rojo</h3>
-            <p>$40.00</p>
+            <img src="producto1.jpg" alt="Producto 1">
+            <p>Blusa elegante - $25</p>
             <button class="btn-comprar">Comprar</button>
         </div>
-    </section>
-
-    <section id="hombre">
-        <h2>Ropa de Hombre</h2>
-        <div class="productos">
-            <img src="images/camisa.jpg" alt="Camisa de Hombre">
-            <h3>Camisa Elegante</h3>
-            <p>$30.00</p>
-            <button class="btn-comprar">Comprar</button>
-        </div>
-    </section>
-
-    <section id="accesorios">
-        <h2>Accesorios</h2>
         <div class="producto">
-            <img src="images/reloj.jpg" alt="Reloj">
-            <h3>Reloj Clásico</h3>
-            <p>$50.00</p>
+            <h2>Reloj de Moda - $50</h2>
+            <img src="reloj.jpg" alt="Reloj" class="producto">
             <button class="btn-comprar">Comprar</button>
         </div>
     </section>
-
-    <footer>
-        <p>© 2025 MALUBE - Todos los derechos reservados.</p>
-    </footer>
 </body>
 </html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fce8f3;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #f8bbd0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background: #F48FB1;
+    padding: 15px 0;
+}
+.menu li {
+    position: relative;
+    padding: 10px 20px;
+}
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.menu li:hover .submenu {
+    display: block;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+.submenu li {
+    padding: 5px 0;
+}
+.productos {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.producto {
+    background: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    text-align: center;
+}
+.producto img {
+    width: 150px;
+    height: 180px;
+    border-radius: 10px;
+}
+.btn-comprar {
+    background: #FF4081;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-comprar:hover {
+    background: #C2185B;
+}
