@@ -1,131 +1,78 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALUBE STYLE</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fce8f3;
-            text-align: center;
-        }
-        header {
-            background-color: #ff69b4;
-            color: white;
-            padding: 20px;
-            font-size: 2em;
-            text-align: center;
-            font-weight: bold;
-        }
-        .descripcion {
-            text-align: center;
-            font-size: 1.5em;
-            padding: 10px;
-            color: #444;
-        }
-        .opciones {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .opcion {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-            cursor: pointer;
-            margin: 15px;
-        }
-        .opciones img {
-            width: 100%;
-            height: 200px;
-            border-radius: 10px;
-        }
-        .opciones p {
-            font-size: 1.2em;
-            color: #333;
-        }
-        .opciones:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-    </style>
-</head>
-<body>
-    <header>MALUBE STYLE</header>
-    <p class="descripcion">¡Explora nuestra increíble colección y encuentra el outfit perfecto para cada ocasión!</p>
-    <div class="opciones">
-        <div class="opcion" onclick="mostrarProductos('mujer')">
-            <img src="mujer.jpg" alt="Ropa de Mujer">
-            <p>Ropa de Mujer - Elegancia y estilo en cada prenda</p>
-        </div>
-        <div class="opcion" onclick="mostrarProductos('hombre')">
-            <img src="hombre.jpg" alt="Ropa de Hombre">
-            <p>Moda y comodidad para cada ocasión.</p>
-        </div>
-        <div class="opcion" onclick="mostrarProductos('maquillaje')">
-            <img src="maquillaje.jpg" alt="Maquillaje">
-            <p>Descubre nuestra línea de maquillaje que realza tu belleza natural.</p>
-        </div>
-        <div class="opcion" onclick="mostrarProductos('zapatos-mujer')">
-            <img src="zapatos_mujer.jpg" alt="Zapatos para Dama">
-            <p>Zapatos para cada ocasión, elegancia en cada paso.</p>
-        </div>
-        <div class="opcion" onclick="mostrarProductos('zapatos-hombre')">
-            <img src="zapatos_hombre.jpg" alt="Zapatos para Hombre">
-            <p>Comodidad y estilo con nuestros zapatos de hombre.</p>
-        </div>
-    </div>
-    <div id="productos" class="productos"></div>
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
-    <script>
-        function mostrarProductos(categoria) {
-            let productos = {
-                "mujer": [
-                    {nombre: "Blusa Elegante", imagen: "blusa.jpg", precio: "$20", descripcion: "Hermosa blusa para lucir increíble en cualquier ocasión."},
-                    {nombre: "Vestido de noche", imagen: "vestido.jpg", descripcion: "Luce espectacular con nuestro vestido de noche."}
-                ],
-                "hombre": [
-                    {nombre: "Camisa Casual", imagen: "camisa_hombre.jpg", descripcion: "Camisa ideal para cualquier ocasión especial."},
-                    {nombre: "Pantalón de Vestir", imagen: "pantalon_hombre.jpg", descripcion: "Comodidad y elegancia en cada paso."}
-                ],
-                "maquillaje": [
-                    {nombre: "Labial Rojo", imagen: "labial.jpg", descripcion: "Dale color y vida a tus labios con nuestro labial estrella."},
-                    {nombre: "Sombra de Ojos", imagen: "sombras.jpg", descripcion: "Dale un toque vibrante a tu mirada con nuestros tonos exclusivos."}
-                ],
-                "zapatos-mujer": [
-                    {nombre: "Tacones Rojos", imagen: "zapato_rojo.jpg", descripcion: "Elegancia y comodidad en cada paso."},
-                    {nombre: "Botas Negras", imagen: "botas.jpg", descripcion: "Perfectas para el invierno y combinables con cualquier look."}
-                ],
-                "zapatos-hombre": [
-                    {nombre: "Zapatos de vestir", imagen: "zapatos_hombre.jpg", descripcion: "Estilo y comodidad para cualquier ocasión formal."},
-                    {nombre: "Zapatillas deportivas", imagen: "zapatillas.jpg", descripcion: "Ideales para el día a día y actividades deportivas."}
-                ]
-            };
-    
-            let contenedor = document.querySelector(".productos");
-            contenedor.innerHTML = "";
-            
-            if (productos[categoria]) {
-                productos[categoria].forEach(item => {
-                    contenedor.innerHTML += `
-                        <div class='producto'>
-                            <img src="${item.imagen}" alt="${item.nombre}">
-                            <p>${item.nombre}</p>
-                            <p>${item.descripcion}</p>
-                            <button class='btn-comprar'>Comprar</button>
-                        </div>`;
-            });
-        }
-    }
-</script>
-</body>
-</html>
+const categories = [
+  { name: "Ropa de Mujer", img: "https://via.placeholder.com/200", path: "/ropa-mujer" },
+  { name: "Ropa de Hombre", img: "https://via.placeholder.com/150", path: "/hombre" },
+  { name: "Maquillaje", img: "https://via.placeholder.com/150", path: "/maquillaje" },
+  { name: "Zapatos Dama", img: "https://via.placeholder.com/150", path: "/zapatos-dama" },
+  { name: "Zapatos Hombre", img: "https://via.placeholder.com/150", path: "/zapatos-hombre" },
+];
+
+const Home = () => {
+  return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      <header className="bg-pink-400 text-white text-xl font-bold p-4 text-center">
+        ¡Bienvenidos a MALUBE!
+      </header>
+      <div className="flex flex-wrap justify-center p-6 gap-6">
+        {categories.map((cat) => (
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            key={cat.name}
+            className="bg-white shadow-lg p-6 rounded-2xl text-center w-64 cursor-pointer hover:shadow-xl"
+          >
+            <Link to={cat.path}>
+              <img src={cat.img} alt={cat.name} className="w-full h-40 object-cover rounded-xl mb-3" />
+              <h2 className="text-xl font-bold text-gray-800">{cat.name}</h2>
+              <p className="text-gray-600">Explora nuestra colección exclusiva</p>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+const RopaHombre = () => (
+  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <header className="bg-pink-500 text-white text-xl font-bold text-center p-6">
+      Ropa de Hombre
+    </header>
+    <div className="flex flex-wrap justify-center p-6 gap-6">
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="bg-white p-4 rounded-2xl shadow-lg w-64 text-center hover:shadow-2xl"
+        >
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Ropa Hombre"
+            className="w-full h-48 object-cover rounded-md mb-4"
+          />
+          <h3 className="text-lg font-semibold">Camisa elegante</h3>
+          <p className="text-gray-600">Camisa de algodón de alta calidad, perfecta para eventos formales o casuales.</p>
+          <span className="block font-bold text-pink-500">$29.99</span>
+          <button className="mt-3 bg-pink-500 text-white p-2 rounded-lg hover:bg-pink-700">
+            Comprar
+          </button>
+        </motion.div>
+  </motion.div>
+);
+
+export default function MALUBE() {
+  return (
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route path="/hombre" element={<RopaHombre />} />
+      </Routes>
+    </Router>
+  );
+}
